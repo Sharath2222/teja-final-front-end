@@ -1,0 +1,44 @@
+<div class="card" style="width: 18rem">
+  <img class="card-img-top" src="{{ dish.img }}" alt="Card image cap" />
+  <div class="card-body">
+    <h5 class="card-title">{{ dish.name }}</h5>
+    <p class="card-text">
+      {{ dish.description }}
+    </p>
+  </div>
+  <p class="card-text1">Rs.{{ dish.price }}</p>
+  <!-- <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          
+        </ul> -->
+  <button
+    type="button "
+    class="btn btn-dark pull-right"
+    (click)="addToCart()"
+    *ngIf="!isAdmin"
+  >
+    Add to Cart
+  </button>
+  <a
+    class="btn btn-success btn-sm rounded-0"
+    type="button"
+    data-toggle="tooltip"
+    data-placement="top"
+    title="Edit"
+    (click)="edit(dish)"
+    *ngIf="!isAdmin"
+    ><i class="fa fa-edit"></i
+  ></a>
+  <button
+    class="btn btn-danger btn-sm rounded-0"
+    type="button"
+    data-toggle="tooltip"
+    data-placement="top"
+    title="Delete"
+    (click)="delete(dish.id)"
+    *ngIf="!isAdmin"
+  >
+    <i class="fa fa-trash"></i>
+  </button>
+  <span class="material-symbols-outlined"> favorite Share </span>
+</div>

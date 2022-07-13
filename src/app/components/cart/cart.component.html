@@ -1,0 +1,113 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div *ngIf="carts.length !== 0; else shopNow">
+    <section class="h-100" style="background-color: #eee">
+      <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-10">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+              <div>
+                <p class="mb-0">
+                  <span class="text-muted">Sort by:</span>
+                  <a href="#!" class="text-body"
+                    >price <i class="fas fa-angle-down mt-1"></i
+                  ></a>
+                </p>
+              </div>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name Of the Dish</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Total Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cart of carts">
+                  <th scope="row">{{ cart.dishName }}</th>
+
+                  <!-- <td (click)=>Itallian Pizza</td> -->
+                  <td>
+                    <select
+                      name="quantity"
+                      [(ngModel)]="cart.quantity"
+                      (ngModelChange)="onChange($event,cart.dishName)"
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="0">8</option>
+                      <option value="0">9</option>
+                    </select>
+                  </td>
+                  <td>{{ cart.price }}</td>
+                  <td>{{ cart.price * cart.quantity }}</td>
+                  <td (click)="deleteProduct(cart.dishName)">
+                    <i class="fa fa-minus-square"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col" colspan="3">Total:</th>
+                  <th>Rs.{{ total }}</th>
+                </tr>
+              </tbody>
+            </table>
+
+            <br />
+
+            <div class="card mb-4">
+              <div class="card-body p-4 d-flex flex-row">
+                <div class="form-outline flex-fill">
+                  <input
+                    type="text"
+                    id="form1"
+                    class="form-control form-control-lg"
+                  />
+                  <label class="form-label" for="form1">Discount code</label>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-outline-warning btn-lg ms-3"
+                >
+                  Apply
+                </button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <button
+                  type="button"
+                  class="btn btn-warning btn-block btn-lg"
+                  (click)="placeOrder()"
+                >
+                  Proceed to Pay
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <ng-template class="container-empty" #shopNow>
+    <img
+      src="https://cdn.pixabay.com/photo/2015/11/06/11/49/shopping-cart-1026501__340.jpg"
+      alt=""
+      class="src"
+      width="100"
+      height="100"
+    />
+    <button type="button" class="btn btn-success" (click)="noItems()">
+      YOUR CART IS EMPTY
+    </button>
+  </ng-template>
+</div>

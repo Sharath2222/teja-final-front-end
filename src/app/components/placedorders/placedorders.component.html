@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">dishname</th>
+        <th scope="col">order id</th>
+        <th scope="col">price</th>
+        <th scope="col">quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>liberty formals men</td>
+        <td>1</td>
+        <td>1499</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>black formals</td>
+        <td>1</td>
+        <td>3499</td>
+        <td>1</td>
+      </tr>
+     
+    </tbody>
+
+  </table>
+  <a class="btn btn-primary" onclick="nav()" routerLink="/">Return to home</a>
+<div class="container" *ngFor="let orderedItems of arr1,let i = index">
+    <div class="order">
+        <h2>Order No. #{{orderedItems[0].orderId}}</h2>
+    </div>
+    <table class="table table-success table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Dish</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+          
+            <tr *ngFor="let order of orderedItems">
+                <th scope="row">{{order.dishName}}</th>
+                <th scope="row">liberty formals men</th>
+                <td>{{order.quantity}}</td>
+                <td>2</td>
+                <td>Rs.{{order.price}}</td>
+                <td>Rs.2988</td>
+            </tr>
+            <tr>
+                <th scope="col" colspan="2">Total:</th>
+                <th>Rs.{{arr3[i]}}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2>order</h2>

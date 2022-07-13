@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbZs4Hcj_7j8hlERCb4nUaYmrB4gF9M2WyiYuPr5m6omuJy0lrTshL2q8KYRh610vKFrU&usqp=CAU"
+      width="120" height="50" alt="" />
+  </a>
+  <a class="navbar-brand">Easy Shoe</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/offers">Offers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/help">Help</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          More
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/formals">Formals</a>
+          <a class="dropdown-item" routerLink="/sneakers">Sneakers</a>
+          <a class="dropdown-item" routerLink="/casuals">Causals</a>
+          <a class="dropdown-item" routerLink="/boots">Boots</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- <div>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+  </div> -->
+  <ul class="d-flex">
+    <li class="nav-item" *ngIf="!isLoggedIn && !isAdmin">
+      <a class="nav-link active" aria-current="page" routerLink="/cart">Cart<span class="badge bg-danger"
+          *ngIf="count>0">{{count}}</span></a>
+    </li>
+    <li class="nav-item" *ngIf="!isAdmin">
+      <a class="nav-link active" aria-current="page" routerLink="/add-shoe">Add Shoe</a>
+    </li>
+    <li class="nav-item" *ngIf="!isLoggedIn">
+      <a class="nav-link active" aria-current="page" routerLink="/login">Login</a>
+    </li>
+    <li class="nav-item" *ngIf="!isLoggedIn">
+      <a class="nav-link active" aria-current="page" routerLink="/orders">Orders</a>
+    </li>
+    <li class="nav-item" *ngIf="!isLoggedIn">
+      <a class="nav-link active" aria-current="page" routerLink="/wallet">Wallet</a>
+    </li>
+    <li class="nav-item" *ngIf="isLoggedIn">
+      <a class="nav-link active" aria-current="page" (click)="logout()" routerLink=" ">Logout</a>
+    </li>
+  </ul>
+</nav>
